@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lex Mexicana — Constitución & Derechos Humanos</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7F3EC;
+    --cream-dark: #EDE6D8;
+    --gold: #B8933E;
+    --gold-light: #D4AA5C;
+    --gold-pale: #F0E4C4;
+    --burgundy: #6B1E2E;
+    --burgundy-light: #8B2E42;
+    --ink: #1A1410;
+    --ink-mid: #3D2E22;
+    --ink-light: #7A6A5A;
+    --white: #FDFAF5;
+    --shadow: rgba(26,20,16,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(247,243,236,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem;
+    height: 62px;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--burgundy);
+    letter-spacing: 0.03em;
+  }
+  .nav-logo span { color: var(--gold); font-style: normal; }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+  }
+  .nav-links a:hover { color: var(--burgundy); border-bottom-color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 100%, rgba(184,147,62,0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 20%, rgba(107,30,46,0.08) 0%, transparent 60%);
+  }
+  .hero-ornament {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.08;
+    margin-bottom: 0.4rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--burgundy);
+  }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--ink-light);
+    margin-bottom: 3rem;
+    max-width: 520px;
+  }
+  .hero-divider {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem;
+    width: 280px;
+  }
+  .hero-divider::before, .hero-divider::after {
+    content: ''; flex: 1; height: 1px; background: var(--gold);
+  }
+  .hero-divider-icon {
+    font-size: 1.1rem; color: var(--gold);
+  }
+  .hero-nav-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 640px;
+    width: 100%;
+  }
+  .hero-card {
+    background: var(--white);
+    border: 1px solid var(--gold-pale);
+    border-radius: 2px;
+    padding: 1.4rem 1.6rem;
+    text-decoration: none;
+    text-align: left;
+    transition: all 0.25s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-card::before {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 2px; background: var(--gold);
+    transition: width 0.3s;
+  }
+  .hero-card:hover::before { width: 100%; }
+  .hero-card:hover { box-shadow: 0 8px 32px var(--shadow); transform: translateY(-2px); }
+  .hero-card-num {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .hero-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 600;
+    color: var(--ink); line-height: 1.3;
+  }
+  .hero-card-desc {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem; color: var(--ink-light);
+    margin-top: 0.3rem; line-height: 1.5;
+  }
+
+  /* ─── SECTIONS ─── */
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 7rem 2rem;
+  }
+  section + section {
+    border-top: 1px solid var(--cream-dark);
+  }
+
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem; letter-spacing: 0.35em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 700; color: var(--ink);
+    margin-bottom: 1.8rem; line-height: 1.15;
+  }
+  h2.section-title em { color: var(--burgundy); font-style: italic; }
+
+  .lead {
+    font-size: 1.15rem;
+    color: var(--ink-mid);
+    font-style: italic;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--gold);
+    padding-left: 1.2rem;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  p { margin-bottom: 1.2rem; color: var(--ink-mid); }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 600;
+    color: var(--burgundy);
+    margin: 2rem 0 0.8rem;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline { position: relative; padding-left: 0; margin-top: 3rem; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 120px 1px 1fr;
+    gap: 0 2rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+  .timeline-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--gold); text-align: right;
+    padding-top: 1.2rem;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .timeline-year:hover { color: var(--burgundy); }
+  .timeline-line {
+    background: var(--cream-dark); position: relative;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .timeline-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    background: var(--cream);
+    position: absolute; top: 1.55rem; left: -5px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .timeline-item:hover .timeline-dot {
+    background: var(--gold); transform: scale(1.3);
+  }
+  .timeline-content {
+    padding: 1.2rem 0 2rem;
+    cursor: pointer;
+  }
+  .timeline-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: var(--ink); margin: 0 0 0.3rem;
+    transition: color 0.2s;
+  }
+  .timeline-item:hover .timeline-content h3 { color: var(--burgundy); }
+  .timeline-badge {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold); background: var(--gold-pale);
+    padding: 2px 8px; border-radius: 2px;
+    margin-bottom: 0.6rem;
+  }
+  .timeline-body {
+    font-size: 0.95rem; color: var(--ink-light);
+    line-height: 1.7; overflow: hidden;
+    max-height: 0; transition: max-height 0.5s ease, opacity 0.4s;
+    opacity: 0;
+  }
+  .timeline-body.open { max-height: 600px; opacity: 1; }
+  .timeline-toggle {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    color: var(--gold); cursor: pointer;
+    text-transform: uppercase; margin-top: 0.3rem;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .toggle-arrow { transition: transform 0.3s; display: inline-block; }
+  .toggle-arrow.open { transform: rotate(90deg); }
+
+  /* ─── DERECHOS GRID ─── */
+  .dh-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem; margin-top: 2rem;
+  }
+  .dh-card {
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    border-radius: 2px;
+    padding: 1.2rem 1.4rem;
+    transition: all 0.2s;
+    cursor: default;
+    border-left: 3px solid var(--gold-pale);
+    position: relative;
+  }
+  .dh-card:hover {
+    border-left-color: var(--gold);
+    box-shadow: 0 4px 16px var(--shadow);
+    transform: translateY(-1px);
+  }
+  .dh-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 700;
+    color: var(--gold-pale); line-height: 1;
+    position: absolute; top: 0.8rem; right: 1rem;
+  }
+  .dh-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem; font-weight: 600;
+    color: var(--ink); margin-bottom: 0.4rem;
+  }
+  .dh-card p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem; color: var(--ink-light);
+    line-height: 1.5; margin: 0;
+  }
+
+  /* ─── INSTITUTIONS ─── */
+  .inst-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.2rem; margin-top: 2rem;
+  }
+  .inst-card {
+    background: var(--white);
+    border: 1px solid var(--cream-dark);
+    padding: 1.4rem 1.6rem;
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+  .inst-card:hover { box-shadow: 0 6px 24px var(--shadow); transform: translateY(-2px); }
+  .inst-type {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .inst-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-weight: 700;
+    color: var(--ink); margin-bottom: 0.4rem;
+  }
+  .inst-card p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.74rem; color: var(--ink-light);
+    line-height: 1.55; margin: 0;
+  }
+  .inst-tag {
+    display: inline-block; margin-top: 0.8rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 10px; border-radius: 2px;
+    background: var(--cream); color: var(--burgundy);
+    border: 1px solid var(--cream-dark);
+  }
+
+  /* ─── QUOTE BLOCK ─── */
+  .pullquote {
+    border-left: 4px solid var(--burgundy);
+    padding: 1.2rem 2rem;
+    margin: 2.5rem 0;
+    background: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+  .pullquote cite {
+    display: block; margin-top: 0.6rem;
+    font-style: normal;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.1em;
+    color: var(--gold); text-transform: uppercase;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--cream-dark);
+    background: var(--white);
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-style: italic;
+    color: var(--burgundy); margin-bottom: 0.5rem;
+  }
+  .footer-note {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    color: var(--ink-light); text-transform: uppercase;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--cream); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-pale); border-radius: 3px; }
+
+  /* ─── FADE IN ─── */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s, transform 0.7s; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1rem; }
+    .nav-links { display: none; }
+    .hero-nav-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 80px 1px 1fr; }
+    .timeline-year { font-size: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Lex <span>✦</span> Mexicana</div>
+  <ul class="nav-links">
+    <li><a href="#constituciones">Constituciones</a></li>
+    <li><a href="#que-es">¿Qué es?</a></li>
+    <li><a href="#ddhh">Derechos Humanos</a></li>
+    <li><a href="#instituciones">Instituciones</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-ornament">Derecho Constitucional Mexicano</div>
+  <h1>La Ley como<br><em>Fundamento</em></h1>
+  <p class="hero-sub">Un recorrido por la historia, la filosofía y la protección de los derechos en México</p>
+  <div class="hero-divider"><span class="hero-divider-icon">⚖</span></div>
+  <div class="hero-nav-grid">
+    <a href="#constituciones" class="hero-card">
+      <div class="hero-card-num">I · Historia</div>
+      <div class="hero-card-title">Las Constituciones Mexicanas</div>
+      <div class="hero-card-desc">De Apatzingán a 1917 — el largo camino hacia el orden jurídico</div>
+    </a>
+    <a href="#que-es" class="hero-card">
+      <div class="hero-card-num">II · Teoría</div>
+      <div class="hero-card-title">¿Qué es una Constitución?</div>
+      <div class="hero-card-desc">Origen, significado y filosofía del contrato social supremo</div>
+    </a>
+    <a href="#ddhh" class="hero-card">
+      <div class="hero-card-num">III · Derechos</div>
+      <div class="hero-card-title">Derechos Humanos</div>
+      <div class="hero-card-desc">Todos los derechos, organismos protectores y su historia</div>
+    </a>
+    <a href="#instituciones" class="hero-card">
+      <div class="hero-card-num">IV · Acción</div>
+      <div class="hero-card-title">¿A quién acudir?</div>
+      <div class="hero-card-desc">Instituciones para defender tus derechos en México</div>
+    </a>
+  </div>
+</div>
+
+<!-- SECCIÓN I: CONSTITUCIONES -->
+<section id="constituciones">
+  <div class="section-label fade-in">I — Recorrido Histórico</div>
+  <h2 class="section-title fade-in">Las <em>Constituciones</em> de México</h2>
+  <p class="lead fade-in">México no nació libre ni ordenado. Cada texto constitucional es el testimonio de una generación que intentó —a veces con sangre, a veces con traición— dar forma a una nación que aún buscaba su alma.</p>
+  <p class="fade-in">El camino constitucional de México es tan accidentado como su geografía. A lo largo de dos siglos, el país atravesó guerras de independencia, intervenciones extranjeras, dictaduras, reformas y revoluciones, y en cada coyuntura histórica surgió la necesidad de redactar un nuevo pacto fundamental. Cada constitución no fue un simple documento jurídico: fue el reflejo vivo del momento político, social y filosófico que la engendró.</p>
+
+  <div class="timeline fade-in" id="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-year">1814</div>
+      <div class="timeline-line"><div class="timeline-dot"></div></div>
+      <div class="timeline-content" onclick="toggleTimeline(this)">
+        <div class="timeline-badge">Primera Constitución</div>
+        <h3>Decreto Constitucional de Apatzingán</h3>
+        <span class="timeline-toggle"><span class="toggle-arrow">▶</span> Leer más</span>
+        <div class="timeline-body">
+          <p>México ardía en la guerra de Independencia. El virrey Venegas gobernaba con mano de hierro mientras Morelos y sus tropas insurgentes controlaban gran parte del centro y sur del país. En ese contexto de caos y euforia libertaria, el Congreso de Chilpancingo convocó a redactar el primer texto constitucional mexicano.</p>
+          <p>El Decreto Constitucional para la Libertad de la América Mexicana, promulgado en Apatzingán el 22 de octubre de 1814, declaró que <em>"la soberanía dimana inmediatamente del pueblo"</em> —una idea revolucionaria para una época en que la Corona española era el único referente de poder. Bebía directamente del pensamiento ilustrado: Rousseau, Locke, Montesquieu resonaban en cada artículo. Estableció la división de poderes en tres: Ejecutivo, Legislativo y Judicial.</p>
+          <p>Nunca tuvo vigencia efectiva. El dominio realista hizo imposible su aplicación. Pero su valor fue simbólico e irreversible: afirmó que el pueblo —no el rey— era el origen legítimo del poder. Fue la semilla de todo lo que vendría.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1824</div>
+      <div class="timeline-line"><div class="timeline-dot"></div></div>
+      <div class="timeline-content" onclick="toggleTimeline(this)">
+        <div class="timeline-badge">Primera República Federal</div>
+        <h3>Constitución Federal de los Estados Unidos Mexicanos</h3>
+        <span class="timeline-toggle"><span class="toggle-arrow">▶</span> Leer más</span>
+        <div class="timeline-body">
+          <p>La independencia se había consumado en 1821. El breve y tormentoso Imperio de Agustín de Iturbide colapsó en 1823, y el país quedó en manos de sus propias contradicciones: centralistas vs. federalistas, liberales vs. conservadores, criollos vs. militares ambiciosos. En ese caldo de cultivo nació la primera Constitución de la república.</p>
+          <p>Inspirada profundamente en la Constitución de los Estados Unidos de 1787, la Carta de 1824 estableció una república federal, representativa y popular. Dividió el territorio en estados libres y soberanos. Creó un Presidente y un Vicepresidente, un Congreso bicameral y una Suprema Corte de Justicia.</p>
+          <p>Su mayor omisión fue deliberada: no abolió la esclavitud de forma inmediata ni tocó los fueros del clero y el ejército —dos poderes fácticos que dominarían la política mexicana por décadas. Fue una constitución de compromisos. Dio forma al Estado, pero no resolvió sus tensiones internas. México iba a pagar ese costo muy pronto.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1836</div>
+      <div class="timeline-line"><div class="timeline-dot"></div></div>
+      <div class="timeline-content" onclick="toggleTimeline(this)">
+        <div class="timeline-badge">República Centralista</div>
+        <h3>Las Siete Leyes Constitucionales</h3>
+        <span class="timeline-toggle"><span class="toggle-arrow">▶</span> Leer más</span>
+        <div class="timeline-body">
+          <p>La inestabilidad política de los años siguientes a 1824 fue abrumadora. Generales ambiciosos, golpes de Estado, invasiones, desmembramiento territorial: México parecía incapaz de gobernarse. Los conservadores y centralistas, que veían en el federalismo el origen del caos, tomaron el control del Congreso y redactaron un nuevo orden constitucional.</p>
+          <p>Las Siete Leyes de 1836 abolieron el sistema federal y centralizaron el poder. Crearon el tristemente célebre <em>Supremo Poder Conservador</em>: un órgano de cinco miembros con facultades absolutas para anular actos del ejecutivo, legislativo y judicial. Era, en esencia, un poder por encima de todos los poderes —una aberración jurídica que concentraba autoridad sin rendir cuentas a nadie.</p>
+          <p>Bajo esta Constitución, Texas se independizó (1836) y México sufrió la guerra con Francia conocida como la Guerra de los Pasteles. El experimento centralista fue un fracaso rotundo. Demostró que la concentración del poder no produce orden, sino resentimiento y separatismo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1843</div>
+      <div class="timeline-line"><div class="timeline-dot"></div></div>
+      <div class="timeline-content" onclick="toggleTimeline(this)">
+        <div class="timeline-badge">Bases Orgánicas</div>
+        <h3>Bases Orgánicas de la República Mexicana</h3>
+        <span class="timeline-toggle"><span class="toggle-arrow">▶</span> Leer más</span>
+        <div class="timeline-body">
+          <p>Las Siete Leyes habían fracasado y el desprestigiado sistema centralista buscaba una nueva forma. Bajo la sombra de Antonio López de Santa Anna —quien ya sumaba varios retornos al poder— se promulgaron las Bases Orgánicas en 1843. Eran, en esencia, una constitución conservadora y centralista, pero más pragmática que su predecesora.</p>
+          <p>Suprimieron el Supremo Poder Conservador, restauraron cierto orden institucional, pero mantuvieron el centralismo y los fueros del clero y del ejército. Establecieron un Congreso bicameral con un Senado nombrado parcialmente por el Ejecutivo, lo que garantizaba el control político de arriba hacia abajo.</p>
+          <p>Su vigencia fue igualmente efímera. México vivía entre pronunciamientos militares, invasiones y una crisis de identidad nacional profunda. En 1846, ante la invasión norteamericana, se restauró la Constitución de 1824 como tabla de salvación. Las Bases Orgánicas quedaron como un capítulo más en el catálogo de experimentos fallidos.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1857</div>
+      <div class="timeline-line"><div class="timeline-dot"></div></div>
+      <div class="timeline-content" onclick="toggleTimeline(this)">
+        <div class="timeline-badge">La Gran Liberal</div>
+        <h3>Constitución Federal de los Estados Unidos Mexicanos (1857)</h3>
+        <span class="timeline-toggle"><span class="toggle-arrow">▶</span> Leer más</span>
+        <div class="timeline-body">
+          <p>Fue un acto de fe y de valentía. Después de la desoladora guerra con Estados Unidos (1846–1848), que arrebató a México la mitad de su territorio, y tras años de lucha entre liberales y conservadores, una generación de juristas brillantes —Ignacio Ramírez, Melchor Ocampo, Valentín Gómez Farías— tomó la pluma para redactar el texto constitucional más liberal que México hubiera conocido.</p>
+          <p>La Constitución de 1857 fue un manifiesto del pensamiento ilustrado aplicado a la realidad mexicana. Consagró las libertades individuales —de expresión, de prensa, de trabajo, de conciencia— como derechos anteriores al Estado. Abolió los fueros del clero y del ejército. Declaró la igualdad jurídica de todos los ciudadanos. Instituyó el juicio de amparo como mecanismo supremo de protección de garantías individuales.</p>
+          <p>La Iglesia Católica la condenó. Los conservadores la repudiaron. Quienes la juraron fueron excomulgados. Esa polarización detonó la feroz Guerra de Reforma (1858–1861) y luego la Intervención Francesa (1862–1867). Pero la Constitución sobrevivió. Con ella sobrevivió Benito Juárez, quien la defendió hasta el fin. Fue el texto fundacional del México moderno liberal.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">1917</div>
+      <div class="timeline-line"><div class="timeline-dot"></div></div>
+      <div class="timeline-content" onclick="toggleTimeline(this)">
+        <div class="timeline-badge">Vigente · La Gran Social</div>
+        <h3>Constitución Política de los Estados Unidos Mexicanos</h3>
+        <span class="timeline-toggle"><span class="toggle-arrow">▶</span> Leer más</span>
+        <div class="timeline-body">
+          <p>La Revolución Mexicana (1910–1920) fue el volcán más violento de la historia nacional. Casi un millón de muertos. Ejércitos de campesinos, obreros y caudillos luchando contra la dictadura porfiriana y, luego, entre sí. Zapata reclamaba tierras. Villa quería justicia. Carranza quería poder. De ese caldo de fuego emergió, en el Congreso Constituyente de Querétaro, la Constitución de 1917.</p>
+          <p>Es la primera constitución social del mundo. Se anticipó en meses a la Constitución de Weimar (Alemania, 1919). Sus artículos más revolucionarios son también los más célebres: el <strong>Artículo 27</strong> estableció la propiedad originaria de la nación sobre tierras y recursos naturales, y sentó la base del ejido agrario. El <strong>Artículo 123</strong> consagró los derechos de los trabajadores: jornada de ocho horas, derecho a huelga, salario mínimo, seguridad social —derechos que en ese momento eran utopía en el resto del mundo.</p>
+          <p>El <strong>Artículo 3°</strong> estableció la educación laica, gratuita y obligatoria —una declaración de guerra cultural contra el clericalismo educativo. El <strong>Artículo 130</strong> sometió a las iglesias al Estado, separando definitivamente ambas esferas.</p>
+          <p>Ha sido reformada en cientos de ocasiones desde entonces. En 2011, la reforma constitucional en materia de derechos humanos la transformó profundamente: incorporó el bloque de constitucionalidad y los tratados internacionales como norma suprema, y elevó la protección de los derechos humanos al más alto nivel. Hoy, la Constitución de 1917 es un texto vivo, lleno de contradicciones, parches y aspiraciones. Es, como México mismo, una obra en construcción permanente.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECCIÓN II: QUÉ ES UNA CONSTITUCIÓN -->
+<section id="que-es">
+  <div class="section-label fade-in">II — Teoría y Filosofía</div>
+  <h2 class="section-title fade-in">¿Qué es una <em>Constitución</em>?</h2>
+  <p class="lead fade-in">Del latín constitutio: acto de fundar, de establecer, de poner en orden. Una sola palabra que carga, en su raíz, el peso de toda la civilización política occidental.</p>
+
+  <div class="fade-in">
+    <h3>El origen de la palabra</h3>
+    <p>La voz <em>constitutio</em> proviene del latín clásico, formada por el prefijo <em>con-</em> (junto, en totalidad) y el verbo <em>statuere</em> (establecer, erigir, fijar). En Roma, una <em>constitutio</em> era un decreto imperial con fuerza de ley general —el acto mediante el cual el Emperador fijaba el orden jurídico. No era un simple mandato: era la fundación de una realidad normativa.</p>
+    <p>Aristóteles, siglos antes, había llamado a la organización fundamental de la polis su <em>politeia</em> —traducida al latín, precisamente, como <em>constitutio</em>. Para el Estagirita, la constitución no era un papel: era la forma en que una comunidad organiza sus relaciones de poder. Era, en sentido profundo, el alma de la ciudad.</p>
+
+    <div class="pullquote">
+      "La constitución es la vida de la ciudad; sin ella, no hay ciudad, sino solo una multitud."
+      <cite>Aristóteles, Política (adaptación)</cite>
+    </div>
+
+    <h3>¿Para qué sirve?</h3>
+    <p>Una constitución cumple, en esencia, tres funciones fundamentales que los teóricos del derecho constitucional han identificado a lo largo de los siglos:</p>
+    <p><strong>1. Funda el Estado.</strong> Es el acto jurídico originario: el momento en que un pueblo decide cómo va a organizarse políticamente. Antes de la constitución, solo hay poder desnudo. Después de ella, hay derecho. La constitución transforma la fuerza en legitimidad.</p>
+    <p><strong>2. Limita el poder.</strong> Este es quizás su rasgo más valioso. El constitucionalismo nació como reacción al absolutismo monárquico. La gran intuición del pensamiento liberal ilustrado —de Locke a Montesquieu, de Rousseau a los Federalistas norteamericanos— fue que el poder no puede ser ilimitado sin convertirse en tiranía. La constitución traza la frontera: hasta aquí llega el Estado; más allá, están los derechos del individuo.</p>
+    <p><strong>3. Garantiza derechos.</strong> Toda constitución moderna reconoce —o debería reconocer— un catálogo de derechos fundamentales que el Estado no puede violar y debe, en cambio, promover y proteger. Estos derechos no son concesiones del Estado: son atributos de la persona humana que preexisten al propio Estado.</p>
+
+    <h3>La dimensión filosófica: el contrato social</h3>
+    <p>Detrás de toda constitución hay una pregunta filosófica mayor: ¿por qué obedecer? ¿Cuál es el origen y el límite de la autoridad política? La respuesta que construyeron los filósofos de la Ilustración fue la teoría del contrato social. Hobbes planteó que los hombres, en estado de naturaleza, viven en una guerra de todos contra todos —y ceden poder al soberano para obtener paz. Locke añadió que ese pacto tiene condiciones: si el soberano viola los derechos naturales de vida, libertad y propiedad, el pueblo puede rebelarse. Rousseau radicalizó la idea: la soberanía no se delega, reside permanentemente en el pueblo.</p>
+    <p>La constitución es, en este marco filosófico, la materialización escrita del contrato social. Es el documento donde el pueblo dice: <em>"Estos son los términos bajo los cuales aceptamos vivir juntos y bajo los cuales aceptamos ser gobernados."</em> Su fuerza normativa no viene del cañón ni del trono, sino del consentimiento.</p>
+
+    <div class="pullquote">
+      "Toda sociedad en la que la garantía de los derechos no esté asegurada, ni la separación de poderes determinada, no tiene constitución."
+      <cite>Declaración de los Derechos del Hombre y del Ciudadano, Francia, 1789 — Art. 16</cite>
+    </div>
+
+    <h3>La Constitución como norma suprema</h3>
+    <p>Hans Kelsen, el gran jurista austríaco del siglo XX, conceptualizó la constitución como la <em>norma hipotética fundamental</em>: la cúspide de la pirámide normativa. Todo el derecho de un Estado debe ser coherente con la constitución. Las leyes secundarias, los reglamentos, los decretos: todos se subordinan a ella. Si una ley contradice a la constitución, esa ley es inválida. Este principio de <em>supremacía constitucional</em> es el pilar del Estado de derecho moderno.</p>
+    <p>En México, el artículo 133 de la Constitución de 1917 establece esta supremacía: la Constitución, junto con los tratados internacionales y las leyes federales que emanen de ella, forman la Ley Suprema de toda la Unión. Ninguna norma estatal puede contravenirla. Y desde la histórica reforma de 2011, los derechos humanos reconocidos en los tratados internacionales tienen el mismo rango constitucional —una transformación que amplió el horizonte de protección de las personas de manera radical.</p>
+  </div>
+</section>
+
+<!-- SECCIÓN III: DERECHOS HUMANOS -->
+<section id="ddhh">
+  <div class="section-label fade-in">III — Derechos Humanos</div>
+  <h2 class="section-title fade-in">Los <em>Derechos</em> de toda Persona</h2>
+  <p class="lead fade-in">Son anteriores al Estado, inalienables e inherentes a la dignidad humana. No se otorgan: se reconocen. Y su violación no es solo un delito jurídico —es un atentado contra la humanidad misma.</p>
+
+  <div class="fade-in">
+    <h3>¿Qué son?</h3>
+    <p>Los derechos humanos son el conjunto de facultades, prerrogativas y libertades fundamentales que toda persona posee por el simple hecho de ser humana, con independencia de su nacionalidad, género, edad, condición social, religión o cualquier otra circunstancia. Son universales —aplican a todos—, indivisibles —no pueden jerarquizarse ni sacrificarse unos por otros—, interdependientes —el disfrute de uno depende de los demás— e inalienables —nadie puede renunciar a ellos ni ser despojado de ellos.</p>
+
+    <h3>Su historia: del reconocimiento filosófico a la positivación formal</h3>
+    <p>La idea de derechos inherentes a la persona tiene raíces profundas. El estoicismo romano proclamó una ley universal de razón común a todos los hombres. El iusnaturalismo medieval, de Tomás de Aquino, reconoció una ley natural superior a la ley humana. Pero fue la Ilustración quien transformó estas ideas en reivindicaciones políticas concretas.</p>
+    <p>El primer gran hito formal fue la <strong>Declaración de Derechos de Virginia (1776)</strong>, que declaró que todos los hombres son iguales y tienen derechos inalienables. Ese mismo año, la <strong>Declaración de Independencia de los Estados Unidos</strong> inmortalizó la frase jeffersoniana de los derechos a la vida, la libertad y la búsqueda de la felicidad. En 1789, la Revolución Francesa produjo la <strong>Declaración de los Derechos del Hombre y del Ciudadano</strong>, que universalizó el concepto.</p>
+    <p>Pero el salto cualitativo decisivo llegó tras el horror de la Segunda Guerra Mundial. El mundo, conmocionado por el Holocausto y los crímenes contra la humanidad, comprendió que era necesario un sistema internacional de protección. El 10 de diciembre de 1948 —fecha que hoy se conmemora como el Día Internacional de los Derechos Humanos— la Asamblea General de las Naciones Unidas adoptó la <strong>Declaración Universal de Derechos Humanos</strong>. Por primera vez en la historia, la comunidad internacional acordó un catálogo mínimo de derechos válidos para toda la humanidad.</p>
+
+    <h3>Todos los Derechos Humanos Reconocidos</h3>
+    <p>La Declaración Universal contempla 30 artículos. Junto con los pactos internacionales posteriores, el sistema de protección cubre los siguientes derechos:</p>
+  </div>
+
+  <div class="dh-grid fade-in" id="dh-grid"></div>
+
+  <div class="fade-in" style="margin-top: 3rem;">
+    <h3>¿Quién los hace valer?</h3>
+    <p>Los derechos humanos se hacen valer a través de múltiples niveles. En primer lugar, el <strong>Estado</strong> tiene la obligación primaria de respetarlos, protegerlos, garantizarlos y promoverlos —esto se conoce como el cuádruple deber del Estado. En segundo lugar, los <strong>tribunales</strong> son el mecanismo por excelencia: en México, el juicio de amparo es la herramienta constitucional para exigir la protección de los derechos fundamentales ante cualquier acto de autoridad.</p>
+    <p>En tercer lugar, los <strong>organismos públicos de derechos humanos</strong> —como la Comisión Nacional de Derechos Humanos (CNDH) y las comisiones estatales— reciben quejas, investigan violaciones y emiten recomendaciones. En cuarto lugar, el <strong>sistema interamericano</strong> —la Comisión Interamericana y la Corte Interamericana de Derechos Humanos— ofrece una instancia supranacional cuando el Estado nacional falla.</p>
+
+    <h3>Organismos internacionales que los promueven y protegen</h3>
+    <p>El sistema internacional de protección de derechos humanos es robusto, aunque perfectible. Sus pilares fundamentales son:</p>
+    <p><strong>Naciones Unidas (ONU):</strong> El Alto Comisionado de las Naciones Unidas para los Derechos Humanos (ACNUDH), el Consejo de Derechos Humanos, y los comités de vigilancia de cada tratado (Comité de Derechos Humanos, Comité contra la Tortura, Comité para la Eliminación de la Discriminación Racial, entre otros).</p>
+    <p><strong>Sistema Interamericano:</strong> La Comisión Interamericana de Derechos Humanos (CIDH) y la Corte Interamericana de Derechos Humanos (Corte IDH), con sede en San José, Costa Rica. México reconoce su jurisdicción contenciosa desde 1998. Las sentencias de la Corte IDH son vinculantes para el Estado mexicano.</p>
+    <p><strong>Organizaciones No Gubernamentales:</strong> Amnistía Internacional, Human Rights Watch, ACNUR (para refugiados), entre otras, ejercen una función crucial de documentación, denuncia y presión sobre los Estados.</p>
+  </div>
+</section>
+
+<!-- SECCIÓN IV: INSTITUCIONES -->
+<section id="instituciones">
+  <div class="section-label fade-in">IV — Acción Legal</div>
+  <h2 class="section-title fade-in">¿A quién <em>acudir</em>?</h2>
+  <p class="lead fade-in">Cuando tus derechos son violados, no estás solo. El sistema jurídico mexicano ofrece múltiples vías, desde la queja administrativa hasta el amparo constitucional y las instancias internacionales.</p>
+
+  <div class="inst-grid fade-in" id="inst-grid"></div>
+
+  <div class="fade-in" style="margin-top: 3rem;">
+    <div class="pullquote">
+      "Los derechos no se mendigan. Se exigen. Y para exigirlos, es necesario conocerlos."
+      <cite>Principio fundamental del activismo jurídico</cite>
+    </div>
+    <p>Recuerda que puedes acceder a la mayoría de estas instancias de forma gratuita. El desconocimiento de los mecanismos de defensa es, con frecuencia, la primera barrera que enfrentan quienes ven vulnerados sus derechos. Conocer estas herramientas es ya un acto de empoderamiento ciudadano.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Lex Mexicana</div>
+  <div class="footer-note">Derecho constitucional · Derechos humanos · México</div>
+  <p style="font-family:'Jost',sans-serif;font-size:0.68rem;color:var(--ink-light);margin-top:0.5rem;">Con fines informativos y educativos. Para asesoría legal, consulta a un abogado.</p>
+</footer>
+
+<script>
+// ─── TIMELINE TOGGLE ───
+function toggleTimeline(el) {
+  const body = el.querySelector('.timeline-body');
+  const arrow = el.querySelector('.toggle-arrow');
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+}
+
+// ─── DERECHOS DATA ───
+const derechos = [
+  { num: 1, title: "A la vida", desc: "Toda persona tiene derecho a que su vida sea respetada. Nadie puede ser privado de ella arbitrariamente." },
+  { num: 2, title: "A la libertad", desc: "Libertad de pensamiento, de conciencia, de movimiento y de no ser sometido a esclavitud o servidumbre." },
+  { num: 3, title: "A la igualdad y no discriminación", desc: "Todas las personas son iguales ante la ley, sin distinción de raza, sexo, idioma, religión u origen." },
+  { num: 4, title: "A la dignidad humana", desc: "Base de todos los demás derechos. Nadie puede ser tratado de forma cruel, inhumana o degradante." },
+  { num: 5, title: "A la seguridad personal", desc: "Protección contra arrestos arbitrarios, detenciones ilegales y desapariciones forzadas." },
+  { num: 6, title: "Al debido proceso", desc: "Derecho a un juicio justo, con garantías: presunción de inocencia, defensa, juez imparcial y plazo razonable." },
+  { num: 7, title: "A la privacidad", desc: "Protección de la vida privada, el domicilio, la correspondencia y los datos personales." },
+  { num: 8, title: "A la libertad de expresión", desc: "Derecho a buscar, recibir y difundir información e ideas sin interferencia del Estado." },
+  { num: 9, title: "A la libertad de reunión y asociación", desc: "Derecho a reunirse pacíficamente y a formar asociaciones, sindicatos y partidos políticos." },
+  { num: 10, title: "A la libertad de pensamiento y religión", desc: "Nadie puede ser perseguido por sus creencias. Libertad de profesar o cambiar de religión." },
+  { num: 11, title: "A participar en el gobierno", desc: "Derecho a votar y ser votado, y a acceder a cargos públicos en condiciones de igualdad." },
+  { num: 12, title: "A la propiedad", desc: "Derecho a poseer bienes. Nadie puede ser privado arbitrariamente de su propiedad." },
+  { num: 13, title: "A la nacionalidad", desc: "Toda persona tiene derecho a una nacionalidad y no puede ser privada de ella arbitrariamente." },
+  { num: 14, title: "Al asilo", desc: "Derecho a buscar asilo y a disfrutar de él en caso de persecución." },
+  { num: 15, title: "A la salud", desc: "Derecho al más alto nivel posible de salud física y mental, y al acceso a servicios de atención médica." },
+  { num: 16, title: "A la educación", desc: "La educación básica es un derecho universal. Debe ser gratuita y orientada al pleno desarrollo humano." },
+  { num: 17, title: "Al trabajo", desc: "Derecho a trabajar en condiciones dignas, con salario justo, horas razonables y sin discriminación." },
+  { num: 18, title: "A la seguridad social", desc: "Protección en caso de desempleo, enfermedad, vejez, maternidad y otras contingencias." },
+  { num: 19, title: "A un nivel de vida adecuado", desc: "Derecho a alimentación, vestido, vivienda y los servicios necesarios para la subsistencia digna." },
+  { num: 20, title: "A participar en la cultura", desc: "Derecho a tomar parte en la vida cultural, disfrutar de las artes y de los beneficios del progreso científico." },
+  { num: 21, title: "Derechos del niño y la niña", desc: "Protección especial a la infancia: contra el trabajo forzado, la explotación y la violencia." },
+  { num: 22, title: "Derechos de las mujeres", desc: "Igualdad plena en todas las esferas: política, económica, social, cultural y familiar." },
+  { num: 23, title: "Derechos de los pueblos indígenas", desc: "Reconocimiento de identidad cultural, autonomía, territorios ancestrales y consulta previa." },
+  { num: 24, title: "Derecho al medio ambiente sano", desc: "A vivir en un entorno limpio y sostenible. Reconocido en la reforma constitucional mexicana de 2023." },
+  { num: 25, title: "Derecho al agua", desc: "Acceso al agua potable limpia y a servicios de saneamiento como derecho humano fundamental." },
+  { num: 26, title: "Derecho a la verdad y a la justicia", desc: "Las víctimas tienen derecho a saber qué les ocurrió, a que se haga justicia y a ser reparadas." },
+  { num: 27, title: "Libertad de prensa e información", desc: "Los medios de comunicación deben poder ejercer sin censura ni represalias del Estado." },
+  { num: 28, title: "Derecho a la identidad de género", desc: "Reconocimiento legal de la identidad de género autopercibida, sin patologización ni discriminación." },
+  { num: 29, title: "Derechos de las personas con discapacidad", desc: "Igualdad de oportunidades, accesibilidad y participación plena en la sociedad." },
+  { num: 30, title: "Derecho a la paz", desc: "Toda persona y todo pueblo tienen derecho a vivir en paz —condición necesaria para el disfrute de todos los demás derechos." }
+];
+
+const dhGrid = document.getElementById('dh-grid');
+derechos.forEach(d => {
+  dhGrid.innerHTML += `
+    <div class="dh-card">
+      <div class="dh-num">${String(d.num).padStart(2,'0')}</div>
+      <h4>${d.title}</h4>
+      <p>${d.desc}</p>
+    </div>
+  `;
+});
+
+// ─── INSTITUCIONES DATA ───
+const instituciones = [
+  { type: "Nacional · Autónoma", name: "CNDH", full: "Comisión Nacional de los Derechos Humanos", desc: "Principal organismo de protección en México. Recibe quejas contra autoridades federales, investiga violaciones y emite recomendaciones públicas. No puede imponer sanciones, pero su presión moral y política es significativa.", tag: "Gratuito" },
+  { type: "Local · Autónoma", name: "CEDH / CDHJ", full: "Comisiones Estatales de Derechos Humanos", desc: "Cada estado tiene su propia comisión. En Jalisco, la CEDHJ atiende violaciones cometidas por autoridades estatales y municipales. Primera instancia para quejas locales.", tag: "Gratuito" },
+  { type: "Judicial · Federal", name: "Juicio de Amparo", full: "Tribunales Federales — Amparo Directo e Indirecto", desc: "El mecanismo constitucional por excelencia. Protege contra actos de autoridad que violen derechos fundamentales. Puede suspender actos, anular resoluciones y ordenar la restitución de derechos. Requiere abogado.", tag: "Puede requerir abogado" },
+  { type: "Federal · Judicial", name: "Suprema Corte", full: "Suprema Corte de Justicia de la Nación", desc: "Máximo tribunal constitucional. Conoce controversias constitucionales, acciones de inconstitucionalidad y algunos amparos en revisión. Define la interpretación suprema de los derechos.", tag: "Instancia suprema" },
+  { type: "Laboral", name: "STPS / CFCRL", full: "Secretaría del Trabajo y Centros de Conciliación", desc: "Para violaciones de derechos laborales: despido injustificado, falta de pago, discriminación en el trabajo. La Reforma Laboral de 2019 creó centros de conciliación gratuitos como primera instancia.", tag: "Gratuito" },
+  { type: "Educación", name: "SEP / DGOSG", full: "Secretaría de Educación Pública", desc: "Para violaciones del derecho a la educación: discriminación en escuelas públicas, acoso escolar, acceso negado. La SEP tiene una Unidad de Asuntos Jurídicos que recibe quejas.", tag: "Gratuito" },
+  { type: "Salud", name: "COFEPRIS / CONAMED", full: "Comisión Nacional de Arbitraje Médico", desc: "Para conflictos derivados de mala práctica médica o negación de servicios de salud. La CONAMED ofrece orientación, conciliación y arbitraje entre pacientes y prestadores de servicios médicos.", tag: "Gratuito" },
+  { type: "Acceso a la justicia", name: "FGR / Fiscalías", full: "Fiscalía General de la República y Fiscalías Estatales", desc: "Para denunciar delitos, incluyendo los que implican violación de derechos humanos: tortura, desaparición forzada, discriminación tipificada como delito. Es la vía penal de protección.", tag: "Gratuito" },
+  { type: "Internacional · Regional", name: "CIDH", full: "Comisión Interamericana de Derechos Humanos", desc: "Instancia interamericana del Sistema de la OEA. Se puede acudir cuando se han agotado los recursos internos sin éxito. Investiga, recomienda y puede llevar casos ante la Corte IDH.", tag: "Agotamiento previo de recursos" },
+  { type: "Internacional · Judicial", name: "Corte IDH", full: "Corte Interamericana de Derechos Humanos", desc: "Tribunal supranacional vinculante para México. Sus sentencias obligan al Estado a reparar daños, reformar leyes e investigar violaciones. Ha condenado a México en casos emblemáticos.", tag: "Vía CIDH" },
+  { type: "Defensa pública", name: "IFDP", full: "Instituto Federal de Defensoría Pública", desc: "Proporciona abogados defensores públicos gratuitos en materia federal a quienes no pueden costear un defensor privado. Es tu derecho constitucional acceder a una defensa adecuada.", tag: "Gratuito" }
+];
+
+const instGrid = document.getElementById('inst-grid');
+instituciones.forEach(i => {
+  instGrid.innerHTML += `
+    <div class="inst-card">
+      <div class="inst-type">${i.type}</div>
+      <h4>${i.name}</h4>
+      <p style="font-family:'Playfair Display',serif;font-size:0.85rem;font-style:italic;color:var(--ink-light);margin-bottom:0.5rem;">${i.full}</p>
+      <p>${i.desc}</p>
+      <span class="inst-tag">${i.tag}</span>
+    </div>
+  `;
+});
+
+// ─── SCROLL FADE ───
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
